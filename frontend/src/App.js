@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -38,7 +38,7 @@ const Footer = () => {
     )
 }
 
-const NavBar = ({ handleNavClick }) => {
+const NavBar = ({ handleNavClick, toggle }) => {
     return (
         <Box
             sx={{
@@ -85,7 +85,7 @@ const NavBar = ({ handleNavClick }) => {
                             color: 'white',
                         }}
                         variant="contained"
-                        onClick={() => window.open("https://discord.gg/kvUusgxd", "_blank")}
+                        onClick={toggle}
                     >
                         <img src="/static/images/Discord.png" alt="discord" width="34" height="25" style={{ marginRight: 12 }} />
                         join now
@@ -179,9 +179,35 @@ const Demands = ({ demandsAnchor }) => {
     )
 }
 
+const useAudio = url => {
+    const [audio] = useState(new Audio(url));
+    const [playing, setPlaying] = useState(false);
+
+    const toggle = () => {
+        setPlaying(!playing);
+        window.open("https://discord.gg/kvUusgxd", "_blank");
+    }
+
+    useEffect(() => {
+        playing ? audio.play() : audio.pause();
+    },
+        [playing]
+    );
+
+    useEffect(() => {
+        audio.addEventListener('ended', () => setPlaying(false));
+        return () => {
+            audio.removeEventListener('ended', () => setPlaying(false));
+        };
+    }, []);
+
+    return [playing, toggle];
+};
+
 
 function App() {
     const demandsAnchor = useRef(null);
+    const [playing, toggle] = useAudio('static/media/cow-moo.wav');
 
     const handleNavClick = () => {
         demandsAnchor.current?.scrollIntoView({ behavior: 'smooth' });
@@ -196,7 +222,7 @@ function App() {
                 backgroundPosition: "100% 0%",
             }}
         >
-            <NavBar handleNavClick={handleNavClick} />
+            <NavBar handleNavClick={handleNavClick} toggle={toggle} />
             <CssBaseline />
             <Box padding="96px" width="60%">
                 <Stack direction="column" spacing={4}>
@@ -236,7 +262,7 @@ function App() {
                                 color: '#2B2B2B',
                             }}
                             variant="contained"
-                            onClick={() => window.open("https://discord.gg/kvUusgxd", "_blank")}
+                            onClick={toggle}
                         >
                             <img src="/static/images/DiscordDark.png" alt="discord" width="34" height="25" style={{ marginRight: 12 }} />
                             join now
