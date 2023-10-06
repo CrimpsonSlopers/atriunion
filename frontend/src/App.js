@@ -221,7 +221,7 @@ function App() {
                             lineHeight: 1.75,
                         }}
                     >
-                        Criminal justice, chatter's right to message freely, chatter's right to vote - these are crucial issues, and we're standing up for our freedoms against a corrupt streamer. Join today and fuel our fight back in Twitch chat, Discord channels, and YouTube comment sections.
+                        Atrioc Chat Labor Union's goal is simple. Criminal justice, chatter's right to message freely, chatter's right to vote - these are crucial issues, and we're standing up for our freedoms against a corrupt streamer. Join today and fuel our fight back in Twitch chat, Discord channels, and YouTube comment sections.
                     </Typography>
                     <Box>
                         <Button
