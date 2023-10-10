@@ -35,7 +35,7 @@ const Footer = () => {
                         fontWeight: 900,
                     }}
                 >
-                    “KEEP ON MOOING”
+                    “KEEP MOOING”
                 </Typography>
                 <img
                     src="/static/images/Logo&Copyright.png"
