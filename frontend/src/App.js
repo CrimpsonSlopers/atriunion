@@ -146,10 +146,13 @@ const Demands = ({ demandsAnchor }) => {
                 }}
             >
                 We will be attempting to open negotiations for a bargaining
-                agreement with Atrioc but if he refuses to comply we are
-                prepared to strike. By joining this discord you are committing
-                to do all that you can to aid the collective in achieving our
-                goals.
+                agreement with Atrioc, and we are committed to finding common
+                ground through compromise. However, if Atrioc refuses to comply,
+                we are prepared to consider other options, including the
+                possibility of a strike. By joining this Discord, you are
+                committing to do all that you can to aid the collective in
+                achieving our goals, with the hope that negotiations can lead to
+                a fair and mutually beneficial agreement
             </Typography>
             <Typography
                 variant="h6"
@@ -231,25 +234,6 @@ const Demands = ({ demandsAnchor }) => {
                     At least 2 EST friendly (and EU neutral) streams per month.
                 </ListItem>
             </List>
-            <Typography
-                variant="h6"
-                sx={{
-                    fontWeight: 900,
-                    fontSize: "18px",
-                    color: "#FFF",
-                    lineHeight: 1.75,
-                    marginBottom: "48px",
-                }}
-            >
-                We will be attempting to open negotiations for a bargaining
-                agreement with Atrioc, and we are committed to finding common
-                ground through compromise. However, if Atrioc refuses to comply,
-                we are prepared to consider other options, including the
-                possibility of a strike. By joining this Discord, you are
-                committing to do all that you can to aid the collective in
-                achieving our goals, with the hope that negotiations can lead to
-                a fair and mutually beneficial agreement
-            </Typography>
         </Box>
     );
 };
