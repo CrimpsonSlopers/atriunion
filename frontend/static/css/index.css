@@ -5,7 +5,7 @@
 html,
 body {
     min-height: 100%;
-    background: #795EB5;
+    background: #795eb5;
     margin: 0;
     color: #000;
 }
@@ -17,9 +17,27 @@ body {
     height: 100%;
     left: 0;
     right: 0;
-    overflow-y: scroll
+    overflow-y: scroll;
 }
 
 #app {
     display: flex;
+}
+
+@media (min-width: 800px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1600px) {
+    html {
+        font-size: 16px;
+    }
 }

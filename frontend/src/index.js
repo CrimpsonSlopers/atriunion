@@ -5,7 +5,6 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import App from "./App";
 
-
 const root = createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>

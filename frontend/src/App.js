@@ -263,84 +263,229 @@ const useAudio = (url) => {
 
 function App() {
     const demandsAnchor = useRef(null);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [playing, toggle] = useAudio("static/media/cow-moo.wav");
 
     const handleNavClick = () => {
         demandsAnchor.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    return (
-        <Box
-            width="100%"
-            sx={{
-                backgroundImage: "url(/static/images/Logo.png)",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "100% 0%",
-            }}
-        >
-            <NavBar handleNavClick={handleNavClick} toggle={toggle} />
-            <CssBaseline />
-            <Box padding="96px" width="60%">
-                <Stack direction="column" spacing={4}>
-                    <Typography
-                        sx={{
-                            textTransform: "uppercase",
-                            fontWeight: 900,
-                            fontSize: "64px",
-                            color: "#FFF",
-                            lineHeight: 1.25,
-                            marginBottom: "32px",
-                        }}
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Cleanup the event listener when the component unmounts
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    if (windowWidth < 1000) {
+        return (
+            <Box
+                width="100%"
+                height="100%"
+                minHeight="100vh"
+                sx={{
+                    backgroundImage: "url(/static/images/LogoDark.png)",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "100% 0%",
+                }}
+            >
+                <CssBaseline />
+                <Box
+                    sx={{
+                        padding: "16px",
+                        paddingBottom: "32px",
+                    }}
+                >
+                    <Stack
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="center"
                     >
-                        Defend the rights of all chatters globally
-                    </Typography>
-                    <Typography
-                        variant="h6"
-                        sx={{
-                            fontWeight: 900,
-                            fontSize: "18px",
-                            color: "#FFF",
-                            lineHeight: 1.75,
-                        }}
-                    >
-                        Atrioc Chat Labor Union's goal is simple. Criminal
-                        justice, chatter's right to message freely, chatter's
-                        right to vote - these are crucial issues, and we're
-                        standing up for our freedoms against a corrupt streamer.
-                        Join today and fuel our fight back in Twitch chat,
-                        Discord channels, and YouTube comment sections.
-                    </Typography>
-                    <Box>
-                        <Button
-                            style={{
-                                backgroundColor: "#FFF",
-                                display: "flex",
-                                borderRadius: "3px",
-                                padding: "10px 30px",
-                                boxShadow: "none",
+                        <img
+                            src="/static/images/Brand.png"
+                            alt="Brand"
+                            height="46"
+                            width="130"
+                        />
+                        <Stack
+                            direction="row"
+                            justifyContent="space-around"
+                            alignItems="center"
+                            spacing={8}
+                        >
+                            <Button
+                                style={{
+                                    backgroundColor: "#2B2B2B",
+                                    display: "flex",
+                                    borderRadius: "3px",
+                                    padding: "10px 30px",
+                                    boxShadow: "none",
+                                    fontWeight: 900,
+                                    fontSize: "14px",
+                                    color: "white",
+                                }}
+                                variant="contained"
+                                onClick={toggle}
+                            >
+                                <img
+                                    src="/static/images/Discord.png"
+                                    alt="discord"
+                                    width="34"
+                                    height="25"
+                                    style={{ marginRight: 12 }}
+                                />
+                                join now
+                            </Button>
+                        </Stack>
+                    </Stack>
+                </Box>
+                <Box padding="16px" width="100%">
+                    <Stack direction="column" spacing={4}>
+                        <Typography
+                            sx={{
+                                textTransform: "uppercase",
+                                fontWeight: 900,
+                                fontSize: "48px",
+                                color: "#FFF",
+                                lineHeight: 1.25,
+                                marginBottom: "16px",
+                            }}
+                        >
+                            Defend the rights of all chatters globally
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                fontWeight: 900,
+                                fontSize: "14px",
+                                color: "#FFF",
+                                lineHeight: 1.75,
+                            }}
+                        >
+                            Atrioc Chat Labor Union's goal is simple. Criminal
+                            justice, chatter's right to message freely,
+                            chatter's right to vote - these are crucial issues,
+                            and we're standing up for our freedoms against a
+                            corrupt streamer. Join today and fuel our fight back
+                            in Twitch chat, Discord channels, and YouTube
+                            comment sections.
+                        </Typography>
+                        <Box>
+                            <Button
+                                style={{
+                                    backgroundColor: "#FFF",
+                                    display: "flex",
+                                    borderRadius: "3px",
+                                    padding: "10px 30px",
+                                    boxShadow: "none",
+                                    fontWeight: 900,
+                                    fontSize: "14px",
+                                    color: "#2B2B2B",
+                                }}
+                                variant="contained"
+                                onClick={toggle}
+                            >
+                                <img
+                                    src="/static/images/DiscordDark.png"
+                                    alt="discord"
+                                    width="34"
+                                    height="25"
+                                    style={{ marginRight: 12 }}
+                                />
+                                join now
+                            </Button>
+                        </Box>
+                    </Stack>
+                </Box>
+            </Box>
+        );
+    } else {
+        return (
+            <Box
+                width="100%"
+                sx={{
+                    backgroundImage: "url(/static/images/Logo.png)",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "100% 0%",
+                }}
+            >
+                <NavBar handleNavClick={handleNavClick} toggle={toggle} />
+                <CssBaseline />
+                <Box padding="96px" width="60%">
+                    <Stack direction="column" spacing={4}>
+                        <Typography
+                            sx={{
+                                textTransform: "uppercase",
+                                fontWeight: 900,
+                                fontSize: "64px",
+                                color: "#FFF",
+                                lineHeight: 1.25,
+                                marginBottom: "32px",
+                            }}
+                        >
+                            Defend the rights of all chatters globally
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            sx={{
                                 fontWeight: 900,
                                 fontSize: "18px",
-                                color: "#2B2B2B",
+                                color: "#FFF",
+                                lineHeight: 1.75,
                             }}
-                            variant="contained"
-                            onClick={toggle}
                         >
-                            <img
-                                src="/static/images/DiscordDark.png"
-                                alt="discord"
-                                width="34"
-                                height="25"
-                                style={{ marginRight: 12 }}
-                            />
-                            join now
-                        </Button>
-                    </Box>
-                </Stack>
+                            Atrioc Chat Labor Union's goal is simple. Criminal
+                            justice, chatter's right to message freely,
+                            chatter's right to vote - these are crucial issues,
+                            and we're standing up for our freedoms against a
+                            corrupt streamer. Join today and fuel our fight back
+                            in Twitch chat, Discord channels, and YouTube
+                            comment sections.
+                        </Typography>
+                        <Box>
+                            <Button
+                                style={{
+                                    backgroundColor: "#FFF",
+                                    display: "flex",
+                                    borderRadius: "3px",
+                                    padding: "10px 30px",
+                                    boxShadow: "none",
+                                    fontWeight: 900,
+                                    fontSize: "18px",
+                                    color: "#2B2B2B",
+                                }}
+                                variant="contained"
+                                onClick={toggle}
+                            >
+                                <img
+                                    src="/static/images/DiscordDark.png"
+                                    alt="discord"
+                                    width="34"
+                                    height="25"
+                                    style={{ marginRight: 12 }}
+                                />
+                                join now
+                            </Button>
+                        </Box>
+                    </Stack>
+                </Box>
+                <Demands demandsAnchor={demandsAnchor} />
+                <Footer />
             </Box>
-            <Demands demandsAnchor={demandsAnchor} />
-            <Footer />
-        </Box>
-    );
+        );
+    }
 }
 
 export default App;
