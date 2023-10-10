@@ -133,7 +133,7 @@ const Demands = ({ demandsAnchor }) => {
                     marginBottom: "32px",
                 }}
             >
-                Defend the rights of all chatters globally
+                Our Demands
             </Typography>
             <Typography
                 variant="h6"
@@ -435,7 +435,7 @@ function App() {
                                 marginBottom: "32px",
                             }}
                         >
-                            Our Demands
+                            Defend the rights of all chatters globally
                         </Typography>
                         <Typography
                             variant="h6"
