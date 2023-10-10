@@ -214,7 +214,7 @@ const Demands = ({ demandsAnchor }) => {
                     }}
                 >
                     ACLU is allowed 1 “Unban Forum” per fiscal quarter to free
-                    our wrongfully convicted comrades
+                    our wrongfully convicted comrades.
                 </ListItem>
                 <ListItem
                     sx={{
@@ -228,7 +228,7 @@ const Demands = ({ demandsAnchor }) => {
                         display: "list-item",
                     }}
                 >
-                    At least 2 EST friendly (and EU neutral) streams per month
+                    At least 2 EST friendly (and EU neutral) streams per month.
                 </ListItem>
             </List>
             <Typography
